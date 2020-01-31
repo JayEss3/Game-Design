@@ -1,0 +1,18 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto 1280px auto;
+    text-align: center;
+    background-image: url("background.jpg");
+    background-size: cover;
+  }
+
+  .grid-center{
+      padding-left: 5px;
+      padding-right: 5x;
+      grid-column: 2;
+      height: 98.5vh;
+      background-color: aliceblue;
+  }
+  .left{
+      text-align: left;
+  }
