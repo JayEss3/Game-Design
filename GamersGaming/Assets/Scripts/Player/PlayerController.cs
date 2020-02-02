@@ -1,15 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Mirror;
+using TMPro;
 public class PlayerController : NetworkBehaviour
 {
     [Header("Objects")]
     [SerializeField] private KeyBindings keyBindings;
     [SerializeField] private PlayerSettings playerSettings;
+    [SerializeField] private PlayerConfig playerConfig;
     [Header("References")]
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private TextMeshProUGUI playerNameplate;
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private UserInterfaceManager userInterfaceManager;
     // Privates
     Vector3 velocity;
     bool isGrounded;
@@ -18,6 +24,21 @@ public class PlayerController : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
+        playerNameplate.text = playerConfig.playerName;
+        if (!keyBindings)
+            keyBindings = Resources.Load<KeyBindings>("Objects/KeyBindings");
+        if (!playerSettings)
+            playerSettings = Resources.Load<PlayerSettings>("Objects/PlayerSettings");
+        if (!playerConfig)
+            playerConfig = Resources.Load<PlayerConfig>("Objects/PlayerConfig");
+        if (!characterController)
+            characterController = transform.GetComponent<CharacterController>();
+        if (!userInterfaceManager)
+            userInterfaceManager = GameObject.Find("Canvas").GetComponent<UserInterfaceManager>();
+    }
+    private void Awake()
+    {
+        canvas.worldCamera = Camera.main;
     }
     private void OnValidate()
     {
@@ -25,6 +46,8 @@ public class PlayerController : NetworkBehaviour
             keyBindings = Resources.Load<KeyBindings>("Objects/KeyBindings");
         if (!playerSettings)
             playerSettings = Resources.Load<PlayerSettings>("Objects/PlayerSettings");
+        if (!playerConfig)
+            playerConfig = Resources.Load<PlayerConfig>("Objects/PlayerConfig");
         if (!characterController)
             characterController = transform.GetComponent<CharacterController>();
         if (!groundCheck)
@@ -35,12 +58,14 @@ public class PlayerController : NetworkBehaviour
         if (!isLocalPlayer) return;
         MovePlayer();
         HandleInteraction();
+        if (Input.GetKeyDown(keyBindings.Menu))
+            userInterfaceManager.MenuToggle();
     }
     private void HandleInteraction()
     {
         if (Input.GetKeyDown(keyBindings.Interact))
         {
-            var colliders = Physics.OverlapSphere(transform.position + new Vector3(1, 0, 0), 0.1f);
+            var colliders = Physics.OverlapSphere(transform.position, 1);
             foreach (Collider collider in colliders)
             {
                 try { collider.gameObject.SendMessage("Interact", gameObject); }

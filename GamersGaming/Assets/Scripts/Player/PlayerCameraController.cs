@@ -7,6 +7,7 @@ public class PlayerCameraController : NetworkBehaviour
 {
     [Header("Objects")]
     [SerializeField] private PlayerConfig playerConfig;
+    [SerializeField] private KeyBindings keyBindings;
     // Privates
     float xRotation = 0f;
     public override void OnStartLocalPlayer()
@@ -29,6 +30,8 @@ public class PlayerCameraController : NetworkBehaviour
     }
     private void Awake()
     {
+        if (!keyBindings)
+            keyBindings = Resources.Load<KeyBindings>("Objects/KeyBindings");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -40,13 +43,28 @@ public class PlayerCameraController : NetworkBehaviour
     private void Update()
     {
         if (!isLocalPlayer) return;
-        var mouseX = Input.GetAxis("Mouse X") * playerConfig.mouseSensitivity * Time.deltaTime;
-        var mouseY = Input.GetAxis("Mouse Y") * playerConfig.mouseSensitivity * Time.deltaTime;
+        if (!Cursor.visible)
+        {
+            var mouseX = Input.GetAxis("Mouse X") * playerConfig.mouseSensitivity * Time.deltaTime;
+            var mouseY = Input.GetAxis("Mouse Y") * playerConfig.mouseSensitivity * Time.deltaTime;
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        Camera.main.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * mouseX);
+            Camera.main.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            transform.Rotate(Vector3.up * mouseX);
+        }
+        if (Input.GetKeyDown(keyBindings.Menu))
+        {
+            if (Cursor.visible)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+        }
     }
 }

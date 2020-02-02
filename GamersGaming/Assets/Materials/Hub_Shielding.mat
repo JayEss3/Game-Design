@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hub_Shielding
+  m_Shader: {fileID: -6465566751694194690, guid: 1c9bfa39e9e8cc449958a0119c149b49,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_5DF068FA: 7.07
+    - _Aplha: 0.64
+    - _Metallic: 0.03
+    - _Normal_Strength: 0.13
+    - _RippleThickness: 5.42
+    - _Smoothness: 0.04
+    - _Water_Speed: 1
+    - _Wave_Speed: 0.012
+    m_Colors:
+    - _Water_1: {r: 1, g: 1, b: 1, a: 0.019607844}
+    - _Water_2: {r: 1, g: 1, b: 1, a: 0}

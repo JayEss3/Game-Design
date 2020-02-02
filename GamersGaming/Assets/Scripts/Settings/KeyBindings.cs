@@ -11,4 +11,5 @@ public class KeyBindings : ScriptableObject
     public KeyCode Sprint = KeyCode.LeftShift;
     public KeyCode Crouch = KeyCode.LeftControl;
     public KeyCode Interact = KeyCode.F;
+    public KeyCode Menu = KeyCode.Tab;
 }
