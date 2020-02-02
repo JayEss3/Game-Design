@@ -16,3 +16,8 @@
   .left{
       text-align: left;
   }
+  .downloadboarder{
+      border-radius: 3px;
+      border: honeydew;
+      border-style: groove;
+  }
