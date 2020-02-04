@@ -1,7 +1,14 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <MainPage msg="Welcome to Your Vue.js App"/>
+    <header>
+      <img alt="Title Card" src="./assets/Insert.png">
+    </header>
+    <main>
+      <div class="content">
+      </div>
+    </main>
+    
+    <MainPage msg="Welcome to GraviTAG"/>
   </div>
 </template>
 

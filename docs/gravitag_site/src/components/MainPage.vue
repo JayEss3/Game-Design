@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    
+  <div style="background-image: url('../assets/logo.png');">
+
   </div>
 </template>
 
