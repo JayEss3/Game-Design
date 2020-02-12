@@ -1,12 +1,13 @@
 <template>
   <v-container>
     <section>
-      <v-img src="../assets/Gravitag.png"></v-img>
+      <v-img class="resp-image" src="../assets/Gravitag.png"></v-img>
     </section>
-    <section>
-      <iframe style="float:center" width=550 height=300 align="middle" src="https://www.youtube.com/embed/m_gX31bQTto" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </section>
-    <v-btn v-on:click="spawn('about')" text icon color="blue">
+    <div class="resp-container">
+      <iframe class="resp-iframe" align="center" src="https://www.youtube.com/embed/m_gX31bQTto" frameborder="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <v-container>
+      <v-btn v-on:click="spawn('about')" text large icon color="white">
       <v-icon>
         assignment
       </v-icon>
@@ -14,6 +15,7 @@
     <v-card v-if="about_isHidden">
       <About/>
     </v-card>
+    </v-container>
   </v-container>
 </template>
 
@@ -48,5 +50,22 @@ export default {
   }
   .white--text{
     color: white
+  }
+  .resp-container {
+    position: relative;
+    padding-top: 56.25%;
+  }
+  .resp-iframe {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border: 1;
+  }
+  .resp-image{
+    max-width: 75%;
+    height: auto;
+    left: 12%;
   }
 </style>
