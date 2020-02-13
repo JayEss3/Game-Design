@@ -16,6 +16,7 @@ public class PlayerController : NetworkBehaviour
     [SerializeField] private TextMeshProUGUI playerNameplate;
     [SerializeField] private Canvas canvas;
     [SerializeField] private UserInterfaceManager userInterfaceManager;
+    [SerializeField] private GameObject weapon;
     // Privates
     Vector3 velocity;
     bool isGrounded;
@@ -115,5 +116,12 @@ public class PlayerController : NetworkBehaviour
         if (!transform.parent)
             velocity.y += playerSettings.Gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
+    }
+    private void MouseAction0()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            weapon.SendMessage("Shoot");
+        }
     }
 }
