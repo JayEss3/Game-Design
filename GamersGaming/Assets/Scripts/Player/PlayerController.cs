@@ -1,146 +1,74 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using Mirror;
-using TMPro;
-public class PlayerController : NetworkBehaviour
-{
-    [Header("Objects")]
-    [SerializeField] private KeyBindings keyBindings;
-    [SerializeField] private PlayerSettings playerSettings;
-    [SerializeField] private PlayerConfig playerConfig;
-    [Header("References")]
-    [SerializeField] private CharacterController characterController;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private GameObject weapon;
-    //[SerializeField] private TextMeshProUGUI playerNameplate;
-    //[SerializeField] private Canvas canvas;
-    [SerializeField] private UserInterfaceManager userInterfaceManager;
-    [SerializeField] private Animator animator;
-    [SerializeField] private NetworkAnimator networkAnimator;
-    //[SerializeField] private List<AnimatorController> animatorControllers;
-    // Privates
-    Vector3 velocity;
-    bool isGrounded;
-    GameObject _weapon;
-    // Private References
-    float groundDistance = 0.05f;
-    public override void OnStartLocalPlayer()
-    {
-        base.OnStartLocalPlayer();
-        //playerNameplate.text = playerConfig.playerName;
-        if (!keyBindings)
-            keyBindings = Resources.Load<KeyBindings>("Objects/KeyBindings");
-        if (!playerSettings)
-            playerSettings = Resources.Load<PlayerSettings>("Objects/PlayerSettings");
-        if (!playerConfig)
-            playerConfig = Resources.Load<PlayerConfig>("Objects/PlayerConfig");
-        if (!characterController)
-            characterController = transform.GetComponent<CharacterController>();
-        if (!networkAnimator)
-            networkAnimator = transform.GetComponent<NetworkAnimator>();
-        if (!userInterfaceManager)
-            userInterfaceManager = GameObject.Find("Canvas").GetComponent<UserInterfaceManager>();
 
-        _weapon = Instantiate(weapon, Camera.main.transform);
-    }
-    private void Awake()
+public class PlayerController : MonoBehaviour
+{
+	[SerializeField] private Rigidbody rigidbody;
+	
+	// Player state
+	[SerializeField] private bool hasJump;
+	[SerializeField] private bool isGrounded;
+	[SerializeField] private bool wishJump;
+	[SerializeField] private Vector3 wishRun;
+
+	// Player physics
+	[SerializeField] private float moveSpeed = 10f;
+	// Accel, decel, and gravity. Just for consistency's sake.
+	[SerializeField] private float acceleration = 20f;
+	[SerializeField] private float maxFallSpeed = 50f;
+	[SerializeField] private float airAcceleration = 5f;
+	[SerializeField] private float airControl = 0.3f;
+	[SerializeField] private float jumpForce = 10f;
+	
+	// Player camera
+	private float rotX = 0f;
+	private float rotY = 0f;
+	[SerializeField] private Transform camera;
+
+    void Awake()
     {
-        //canvas.worldCamera = Camera.main;
+		if (!rigidbody) rigidbody = transform.GetComponent<Rigidbody>();
+		Camera mainCamera = Camera.main;
     }
-    private void Update()
+
+    void Update()
     {
-        if (!isLocalPlayer) return;
-        MovePlayer();
-        HandleInteraction();
-        HandleAction1();
-        if (Input.GetKeyDown(keyBindings.Menu))
-            userInterfaceManager.MenuToggle();
+        if (Input.GetKeyDown(KeyCode.Space)) 
+		{
+			isJumping = true;
+			print("Jumped!");
+		}
+		wishRun = new Vector3(acceleration, 0, acceleration);
+		if (Input.GetKey(KeyCode.W)) wishRun += transform.forward;
+		if (Input.GetKey(KeyCode.A)) wishRun -= transform.right;
+		if (Input.GetKey(KeyCode.S)) wishRun -= transform.forward;
+		if (Input.GetKey(KeyCode.D)) wishRun += transform.right;
     }
-    private void HandleInteraction()
-    {
-        if (Input.GetKeyDown(keyBindings.Interact))
-        {
-            var colliders = Physics.OverlapSphere(transform.position, 1);
-            foreach (Collider collider in colliders)
-            {
-                try { collider.gameObject.SendMessage("Interact", gameObject); }
-                catch { }
-            }
-        }
-    }
-    private void MovePlayer()
-    {
-        CheckGround();
-        var inputs = HandleMoveInputs();
-        var move = transform.right * inputs.x + transform.forward * inputs.y;
-        if (Input.GetKey(keyBindings.Sprint))
-        {
-            characterController.Move(move * playerSettings.SprintSpeed * Time.deltaTime);
-            //networkAnimator.animator.runtimeAnimatorController = animatorControllers[4];
-            //animator.runtimeAnimatorController = animatorControllers[4];
-        }
-        else
-            characterController.Move(move * playerSettings.MoveSpeed * Time.deltaTime);
-        if (inputs == Vector2.zero && isGrounded)
-        {
-            //networkAnimator.animator.runtimeAnimatorController = animatorControllers[0];
-            //animator.runtimeAnimatorController = animatorControllers[0];
-        }
-        HandleJump();
-        HandleGravity();
-    }
-    private void CheckGround()
-    {
-        isGrounded = Physics.CheckSphere(groundCheck.position - new Vector3(0, groundDistance, 0), groundDistance);
-        if (isGrounded)
-            velocity.y = playerSettings.Gravity;
-    }
-    private Vector2 HandleMoveInputs()
-    {
-        float x = 0f, z = 0f;
-        if (Input.GetKey(keyBindings.Forward))
-            z += 1;
-        if (Input.GetKey(keyBindings.Backward))
-            z -= 1;
-        if (Input.GetKey(keyBindings.Right))
-            x += 1;
-        if (Input.GetKey(keyBindings.Left))
-            x -= 1;
-        if(z < 0)
-        {
-            //networkAnimator.animator.runtimeAnimatorController = animatorControllers[3];
-            //animator.runtimeAnimatorController = animatorControllers[3];
-        }
-        else
-        {
-            //networkAnimator.animator.runtimeAnimatorController = animatorControllers[2];
-            //animator.runtimeAnimatorController = animatorControllers[2];
-        }
-        return new Vector2(x, z);
-    }
-    private void HandleJump()
-    {
-        if (Input.GetButton("Jump") && (isGrounded || transform.parent))
-        {
-            velocity.y = Mathf.Sqrt(3 * -2 * playerSettings.Gravity);
-            //networkAnimator.animator.runtimeAnimatorController = animatorControllers[1];
-            //animator.runtimeAnimatorController = animatorControllers[1];
-        }
-        else if (transform.parent)
-            velocity.y = 0f;
-    }
-    private void HandleGravity() {
-        if (!transform.parent)
-            velocity.y += playerSettings.Gravity * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
-    }
-    private void HandleAction1()
-    {
-        if (Input.GetMouseButtonDown(keyBindings.LeftClick))
-        {
-            _weapon.SendMessage("Shoot");
-        }
-    }
+	
+	void FixedUpdate()
+	{
+		if (isJumping && hasJump)
+		{
+			if (!isGrounded) hasJump = false;
+			print("Is jumping...");
+			rigidbody.velocity = new Vector3(rigidbody.velocity.x, jumpForce, rigidbody.velocity.z);
+			isJumping = false;
+		}
+		float downVelocity = 0f;
+		if (!isGrounded) downVelocity = Mathf.Max(rigidbody.velocity.y - gravity * Time.deltaTime, -100f);
+		rigidbody.velocity += new Vector3(wishRun.x, downVelocity, wishRun.z);
+	}
+	
+	void OnCollisionEnter()
+	{
+		isJumping = false;
+		isGrounded = true;
+		hasJump = true;
+	}
+	
+	void OnCollisionExit()
+	{
+		isGrounded = false; 
+	}
 }
