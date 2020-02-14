@@ -13,19 +13,23 @@ public class PlayerController : NetworkBehaviour
     [Header("References")]
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private TextMeshProUGUI playerNameplate;
-    [SerializeField] private Canvas canvas;
-    [SerializeField] private UserInterfaceManager userInterfaceManager;
     [SerializeField] private GameObject weapon;
+    //[SerializeField] private TextMeshProUGUI playerNameplate;
+    //[SerializeField] private Canvas canvas;
+    [SerializeField] private UserInterfaceManager userInterfaceManager;
+    [SerializeField] private Animator animator;
+    [SerializeField] private NetworkAnimator networkAnimator;
+    //[SerializeField] private List<AnimatorController> animatorControllers;
     // Privates
     Vector3 velocity;
     bool isGrounded;
+    GameObject _weapon;
     // Private References
     float groundDistance = 0.05f;
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
-        playerNameplate.text = playerConfig.playerName;
+        //playerNameplate.text = playerConfig.playerName;
         if (!keyBindings)
             keyBindings = Resources.Load<KeyBindings>("Objects/KeyBindings");
         if (!playerSettings)
@@ -34,31 +38,23 @@ public class PlayerController : NetworkBehaviour
             playerConfig = Resources.Load<PlayerConfig>("Objects/PlayerConfig");
         if (!characterController)
             characterController = transform.GetComponent<CharacterController>();
+        if (!networkAnimator)
+            networkAnimator = transform.GetComponent<NetworkAnimator>();
         if (!userInterfaceManager)
             userInterfaceManager = GameObject.Find("Canvas").GetComponent<UserInterfaceManager>();
+
+        _weapon = Instantiate(weapon, Camera.main.transform);
     }
     private void Awake()
     {
-        canvas.worldCamera = Camera.main;
-    }
-    private void OnValidate()
-    {
-        if (!keyBindings)
-            keyBindings = Resources.Load<KeyBindings>("Objects/KeyBindings");
-        if (!playerSettings)
-            playerSettings = Resources.Load<PlayerSettings>("Objects/PlayerSettings");
-        if (!playerConfig)
-            playerConfig = Resources.Load<PlayerConfig>("Objects/PlayerConfig");
-        if (!characterController)
-            characterController = transform.GetComponent<CharacterController>();
-        if (!groundCheck)
-            Debug.LogWarning($"{gameObject.name} is missing GroundCheck");
+        //canvas.worldCamera = Camera.main;
     }
     private void Update()
     {
         if (!isLocalPlayer) return;
         MovePlayer();
         HandleInteraction();
+        HandleAction1();
         if (Input.GetKeyDown(keyBindings.Menu))
             userInterfaceManager.MenuToggle();
     }
@@ -80,9 +76,18 @@ public class PlayerController : NetworkBehaviour
         var inputs = HandleMoveInputs();
         var move = transform.right * inputs.x + transform.forward * inputs.y;
         if (Input.GetKey(keyBindings.Sprint))
+        {
             characterController.Move(move * playerSettings.SprintSpeed * Time.deltaTime);
+            //networkAnimator.animator.runtimeAnimatorController = animatorControllers[4];
+            //animator.runtimeAnimatorController = animatorControllers[4];
+        }
         else
             characterController.Move(move * playerSettings.MoveSpeed * Time.deltaTime);
+        if (inputs == Vector2.zero && isGrounded)
+        {
+            //networkAnimator.animator.runtimeAnimatorController = animatorControllers[0];
+            //animator.runtimeAnimatorController = animatorControllers[0];
+        }
         HandleJump();
         HandleGravity();
     }
@@ -103,12 +108,26 @@ public class PlayerController : NetworkBehaviour
             x += 1;
         if (Input.GetKey(keyBindings.Left))
             x -= 1;
+        if(z < 0)
+        {
+            //networkAnimator.animator.runtimeAnimatorController = animatorControllers[3];
+            //animator.runtimeAnimatorController = animatorControllers[3];
+        }
+        else
+        {
+            //networkAnimator.animator.runtimeAnimatorController = animatorControllers[2];
+            //animator.runtimeAnimatorController = animatorControllers[2];
+        }
         return new Vector2(x, z);
     }
     private void HandleJump()
     {
         if (Input.GetButton("Jump") && (isGrounded || transform.parent))
+        {
             velocity.y = Mathf.Sqrt(3 * -2 * playerSettings.Gravity);
+            //networkAnimator.animator.runtimeAnimatorController = animatorControllers[1];
+            //animator.runtimeAnimatorController = animatorControllers[1];
+        }
         else if (transform.parent)
             velocity.y = 0f;
     }
@@ -117,11 +136,11 @@ public class PlayerController : NetworkBehaviour
             velocity.y += playerSettings.Gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
     }
-    private void MouseAction0()
+    private void HandleAction1()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(keyBindings.LeftClick))
         {
-            weapon.SendMessage("Shoot");
+            _weapon.SendMessage("Shoot");
         }
     }
 }

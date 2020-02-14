@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class FollowPath : MonoBehaviour
+public class FollowPath : NetworkBehaviour
 {
     [SerializeField] private List<Transform> path = new List<Transform>();
     [SerializeField] private FollowPathStates state = FollowPathStates.TraseBackLoop;
@@ -16,6 +17,7 @@ public class FollowPath : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!isServer) return;
         switch (state)
         {
             case FollowPathStates.DoNotLoop:
@@ -42,6 +44,7 @@ public class FollowPath : MonoBehaviour
                 break;
         }
     }
+    [Server]
     private void Move()
     {
         if (Vector3.Distance(transform.position, path[curPath].position) > 0.01f)

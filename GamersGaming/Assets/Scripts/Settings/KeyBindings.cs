@@ -12,4 +12,5 @@ public class KeyBindings : ScriptableObject
     public KeyCode Crouch = KeyCode.LeftControl;
     public KeyCode Interact = KeyCode.F;
     public KeyCode Menu = KeyCode.Tab;
+    public int LeftClick = 0;
 }

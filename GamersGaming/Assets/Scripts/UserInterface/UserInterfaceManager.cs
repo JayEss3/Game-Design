@@ -47,7 +47,18 @@ public class UserInterfaceManager : MonoBehaviour
     }
     public void MenuToggle()
     {
-        MenuPanel.SetActive(!MenuPanel.activeSelf);
+        if (Cursor.visible)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            MenuPanel.SetActive(false);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            MenuPanel.SetActive(true);
+        }
     }
     public void MenutoLogin()
     {

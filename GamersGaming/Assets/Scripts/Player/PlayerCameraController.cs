@@ -54,17 +54,5 @@ public class PlayerCameraController : NetworkBehaviour
             Camera.main.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             transform.Rotate(Vector3.up * mouseX);
         }
-        if (Input.GetKeyDown(keyBindings.Menu))
-        {
-            if (Cursor.visible)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-            else {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-        }
     }
 }

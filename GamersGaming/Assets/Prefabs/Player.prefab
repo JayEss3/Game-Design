@@ -313,8 +313,10 @@ MonoBehaviour:
   playerConfig: {fileID: 11400000, guid: 6fa70dd953f02e04295bdcf4bb02ec5a, type: 2}
   characterController: {fileID: 7405141763218193650}
   groundCheck: {fileID: 7405141764171905946}
-  playerNameplate: {fileID: 2446243245550356186}
-  canvas: {fileID: 4901689000957286101}
+  weapon: {fileID: 1390435451766779570, guid: b0c5b398393619a45ac40796ea55ce3d, type: 3}
+  userInterfaceManager: {fileID: 0}
+  animator: {fileID: 0}
+  networkAnimator: {fileID: 0}
 --- !u!114 &167047143103833438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +332,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   playerConfig: {fileID: 11400000, guid: 6fa70dd953f02e04295bdcf4bb02ec5a, type: 2}
+  keyBindings: {fileID: 0}
 --- !u!143 &7405141763218193650
 CharacterController:
   m_ObjectHideFlags: 0
@@ -465,7 +468,7 @@ GameObject:
   - component: {fileID: 7405141764459462824}
   m_Layer: 0
   m_Name: Player_Model
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
