@@ -205,5 +205,4 @@ public class PlayerController : NetworkBehaviour
     velocity.x += addSpeed * wishDir.x;
     velocity.z += addSpeed * wishDir.y;
   }
-  >>>>>>> 973bdc0e... Added rigidbody player movement
 }
