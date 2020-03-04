@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{360CA872-05BE-6525-A6BD-C2D326E52B89}</ProjectGuid>
+    <ProjectGuid>{D636016A-491C-D8F9-5D37-A0990ED866DC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Mirror.Examples</AssemblyName>
@@ -90,10 +90,10 @@
     <None Include="Assets\Mirror\Examples\Tanks\Models\(Public Domain) Recon_Tank\Recon_Tank - License.txt" />
     <None Include="Assets\Mirror\Examples\Mirror.Examples.asmdef" />
     <Reference Include="UnityEditor.UI">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -291,34 +291,34 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Pdb">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Telepathy">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Runtime/Transport/Telepathy/Telepathy.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Runtime/Transport/Telepathy/Telepathy.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Core">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Tests/Editor/Castle.Core.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Tests/Editor/Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="NSubstitute">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Tests/Editor/NSubstitute.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Tests/Editor/NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Tests/Editor/System.Threading.Tasks.Extensions.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Tests/Editor/System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Plugins/MySql.Data.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Plugins/MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.NRefactory">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -677,11 +677,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Mirror.csproj">
-      <Project>{61B8304C-E450-5CCD-021B-B1CFFE3A6D67}</Project>
+      <Project>{37B2DD96-C125-EFD1-FFF5-2E4F6E4F94FA}</Project>
       <Name>Mirror</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Components.csproj">
-      <Project>{F54C4B9F-6D24-88CB-F0EF-08CF6B0795BB}</Project>
+      <Project>{CEE9AB27-5A97-E443-3644-9DC1298A56EB}</Project>
       <Name>Mirror.Components</Name>
     </ProjectReference>
   </ItemGroup>

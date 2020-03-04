@@ -7,7 +7,8 @@ using TMPro;
 
 public class PlayerController : NetworkBehaviour
 {
-  [Header("Objects")]
+    #region Variables
+    [Header("Objects")]
   [SerializeField] private KeyBindings keyBindings;
   [SerializeField] private PlayerSettings playerSettings;
   [SerializeField] private PlayerConfig playerConfig;
@@ -24,7 +25,7 @@ public class PlayerController : NetworkBehaviour
 
   [Header("Vars")]
   // Camera setup
-    private float viewOffset = 0.6f; // The height at which the camera is bound to
+  private float viewOffset = 0.6f; // The height at which the camera is bound to
   private float camXRotation = 0.0f;
   private float xMouseSensitivity = 30.0f;
   private float yMouseSensitivity = 30.0f;
@@ -44,8 +45,9 @@ public class PlayerController : NetworkBehaviour
   private Vector3 velocity;
   private bool isGrounded = false;
   private Vector3 wishMove = Vector3.zero;
-
-  public override void OnStartLocalPlayer()
+    #endregion Variables
+    #region Mirror
+    public override void OnStartLocalPlayer()
   {
     base.OnStartLocalPlayer();
     Camera.main.orthographic = false;
@@ -54,7 +56,7 @@ public class PlayerController : NetworkBehaviour
     Camera.main.transform.localEulerAngles = new Vector3(10f, 0f, 0f);
     camera = Camera.main;
 
-    playerNameplate.text = playerConfig.playerName;
+    //playerNameplate.text = playerConfig.playerName;
     if (!keyBindings)
       keyBindings = Resources.Load<KeyBindings>("Objects/KeyBindings");
     if (!playerSettings)
@@ -79,8 +81,9 @@ public class PlayerController : NetworkBehaviour
       Camera.main.transform.localEulerAngles = new Vector3(90f, 0f, 0f);
     }
   }
-
-  private void Awake()
+    #endregion Mirror
+    #region Unity Fucntions
+    private void Awake()
   {
     if (!keyBindings)
       keyBindings = Resources.Load<KeyBindings>("Objects/KeyBindings");
@@ -108,8 +111,8 @@ public class PlayerController : NetworkBehaviour
     }
 
     /* Camera rotation stuff, mouse controls this shit */
-    var mouseX = Input.GetAxisRaw("Mouse X") * xMouseSensitivity * Time.deltaTime;
-    var mouseY = Input.GetAxisRaw("Mouse Y") * yMouseSensitivity * Time.deltaTime;
+    var mouseX = Input.GetAxisRaw("Mouse X") * playerConfig.mouseSensitivity * Time.deltaTime;
+    var mouseY = Input.GetAxisRaw("Mouse Y") * playerConfig.mouseSensitivity * Time.deltaTime;
 
     camXRotation -= mouseY;
     camXRotation = Mathf.Clamp(camXRotation, -90f, 90f);
@@ -121,15 +124,16 @@ public class PlayerController : NetworkBehaviour
       GroundMove();
     else if(!isGrounded)
       AirMove();
-    print("Magnitude: " + new Vector2(velocity.x, velocity.z).magnitude);
+
+        AbilityInputs();
   }
 
   private void FixedUpdate()
   {
     rigidbody.velocity = velocity;
   }
-
-  private void OnCollisionEnter()
+    #region Collider Triggers 
+    private void OnCollisionEnter()
   {
     isGrounded = true;
     jumps = maxJumps;
@@ -150,8 +154,11 @@ public class PlayerController : NetworkBehaviour
   {
     isGrounded = false;
   }
-
-  private void GroundMove()
+    #endregion Collider Triggers
+    #endregion Unity Fucntions
+    #region Player Movement
+    #region Player Input
+    private void GroundMove()
   {
     float x = 0, z = 0;
     if (Input.GetKey(keyBindings.Forward))  z += 1;
@@ -178,8 +185,14 @@ public class PlayerController : NetworkBehaviour
     Accelerate(airAcceleration);
     velocity.y -= gravity * Time.deltaTime;
   }
-
-  private void Friction()
+    private void AbilityInputs()
+    {
+        if (Input.GetMouseButtonDown(keyBindings.LeftClick))
+            ApplyForce(500f, true);
+    }
+    #endregion Player Input
+    #region Physics
+    private void Friction()
   {
     var speed = velocity.magnitude;
     if (speed > 0)
@@ -205,4 +218,30 @@ public class PlayerController : NetworkBehaviour
     velocity.x += addSpeed * wishDir.x;
     velocity.z += addSpeed * wishDir.y;
   }
+    #endregion Physics
+    #endregion Player Movement
+    #region External Interactions
+    /// <summary>
+    /// Applies a force in the forward direction of the player
+    /// </summary>
+    /// <param name="inForce">The strength of the force acting on the player</param>
+    /// <param name="useLookDirection">Default: False uses camera's look direction instead of true forward</param>
+    public void ApplyForce(float inForce, bool useLookDirection=false)
+    {
+        Debug.Log(transform.position);
+        if (useLookDirection)
+            rigidbody.AddForce(Camera.main.transform.forward * inForce, ForceMode.Impulse);
+        else
+            rigidbody.AddRelativeForce(Vector3.forward * inForce, ForceMode.Impulse);
+        Debug.Log(transform.position);
+    }
+    /// <summary>
+    /// Applies a force to the player
+    /// </summary>
+    /// <param name="inForce">The strength and direction of the force acting on the player</param>
+    public void ApplyForce(Vector3 inForce)
+    {
+        rigidbody.AddRelativeForce(inForce, ForceMode.Impulse);
+    }
+    #endregion External Interactions
 }

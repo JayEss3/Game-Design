@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{30DA68F1-E4D5-06F6-782D-E7EFA4A5210B}</ProjectGuid>
+    <ProjectGuid>{1D85532F-105E-69AB-4961-3D5A38EEF70D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -65,100 +65,100 @@
   <ItemGroup>
     <Compile Include="Assets\Editor\ScriptableObjectDrawer.cs" />
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Polybrush">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.Polybrush.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.Polybrush.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Polybrush.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.Polybrush.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.Polybrush.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualEffectGraph.Runtime">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.VisualEffectGraph.Runtime.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.VisualEffectGraph.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualEffectGraph.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -359,37 +359,37 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Mdb">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Pdb">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Mono.CecilX.Rocks">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Telepathy">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Runtime/Transport/Telepathy/Telepathy.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Runtime/Transport/Telepathy/Telepathy.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Core">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Tests/Editor/Castle.Core.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Tests/Editor/Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="NSubstitute">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Tests/Editor/NSubstitute.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Tests/Editor/NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Mirror/Tests/Editor/System.Threading.Tasks.Extensions.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Mirror/Tests/Editor/System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">
-      <HintPath>E:/ButNeverZero/But Never Zero/Assets/Plugins/MySql.Data.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Assets/Plugins/MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.NRefactory">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/PackageCache/com.unity.render-pipelines.core@7.1.8/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>E:/ButNeverZero/But Never Zero/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
+      <HintPath>C:/Users/swire/Documents/Game-Design/GamersGaming/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.0f6/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -748,39 +748,39 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{FF606D62-70B3-D3C0-0839-CD7F6F0F1199}</Project>
+      <Project>{825BA9E1-0378-79C4-058C-99E861FB3698}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Weaver.csproj">
-      <Project>{8B7389A5-F0AC-FC0D-6730-C79383FFEC6A}</Project>
+      <Project>{E3F490CA-409B-067F-416F-DE7118FFDB3E}</Project>
       <Name>Mirror.Weaver</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Authenticators.csproj">
-      <Project>{1A645065-AAAB-7198-3D45-D2B3F3EBE5B6}</Project>
+      <Project>{F36E4F34-67A9-3D6C-C9F7-D8DCCAEBB030}</Project>
       <Name>Mirror.Authenticators</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Components.csproj">
-      <Project>{F54C4B9F-6D24-88CB-F0EF-08CF6B0795BB}</Project>
+      <Project>{CEE9AB27-5A97-E443-3644-9DC1298A56EB}</Project>
       <Name>Mirror.Components</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Examples.csproj">
-      <Project>{360CA872-05BE-6525-A6BD-C2D326E52B89}</Project>
+      <Project>{D636016A-491C-D8F9-5D37-A0990ED866DC}</Project>
       <Name>Mirror.Examples</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.CompilerSymbols.csproj">
-      <Project>{5C1872D3-D948-2001-31BF-DEFB5010FBDB}</Project>
+      <Project>{AC4D7038-E380-1CF7-A6C8-B8EE2059057E}</Project>
       <Name>Mirror.CompilerSymbols</Name>
     </ProjectReference>
     <ProjectReference Include="Ninja.WebSockets.csproj">
-      <Project>{B3E36A54-6F5D-3881-10C6-AB4C7DA63234}</Project>
+      <Project>{62A575D4-60B2-DF3F-B16E-766D23193426}</Project>
       <Name>Ninja.WebSockets</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.csproj">
-      <Project>{61B8304C-E450-5CCD-021B-B1CFFE3A6D67}</Project>
+      <Project>{37B2DD96-C125-EFD1-FFF5-2E4F6E4F94FA}</Project>
       <Name>Mirror</Name>
     </ProjectReference>
     <ProjectReference Include="Mirror.Editor.csproj">
-      <Project>{1F4B6C15-FC18-1248-7CD5-9A1BB5DA678D}</Project>
+      <Project>{3B9DA58E-1F57-ED52-2687-EB3AA29ABD0C}</Project>
       <Name>Mirror.Editor</Name>
     </ProjectReference>
   </ItemGroup>
