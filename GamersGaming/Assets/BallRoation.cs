@@ -7,13 +7,13 @@ public class BallRoation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Light discoLight = lightGameObject.AddComponent<Light>();
+        Light discoLight = this.gameObject.AddComponent<Light>();
         discoLight.color = Color.green;
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.transform.Rotate(0, 0, 0.05);
+        this.transform.Rotate(0, 0, 0.05f);
     }
 }

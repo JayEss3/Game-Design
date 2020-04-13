@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GrapplingHook : MonoBehaviour
 {
-    
+
     public GameObject hook;
     public GameObject hookHolder;
 
@@ -38,7 +38,7 @@ public class GrapplingHook : MonoBehaviour
         if (fired == true && hooked == false)
         {
             hook.transform.Translate(Vector3.forward * Time.deltaTime * hookTravelSpeed);
-            currentDistance = Vector3.Distance(transfor.position, hook.transform.position);
+            currentDistance = Vector3.Distance(transform.position, hook.transform.position);
 
             if (currentDistance >= maxDistance)
                 ReturnHook();
@@ -49,7 +49,7 @@ public class GrapplingHook : MonoBehaviour
 
             hook.transform.parent = hookedObj.transform;
 
-            transform.position = Vecotr3.MoveTowards(transform.position, hook.transform.position, Time.deltaTime * playerTravelSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, hook.transform.position, Time.deltaTime * playerTravelSpeed);
             float distanceToHook = Vector3.Distance(transform.position, hook.transform.position);
 
             this.GetComponent<Rigidbody>().useGravity = false;
@@ -58,7 +58,7 @@ public class GrapplingHook : MonoBehaviour
             {
                 if (grounded == false)
                 {
-                    this.transform.translate(Vector3.forward * Time.deltaTime * 13f);
+                    this.transform.Translate(Vector3.forward * Time.deltaTime * 13f);
                     this.transform.Translate(Vector3.up * Time.deltaTime * 18f);
                 }
 
