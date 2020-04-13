@@ -382,8 +382,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  keyBindings: {fileID: 11400000, guid: 93e438c314abb1a48a928ab01cf3cd6e, type: 2}
-  playerSettings: {fileID: 11400000, guid: 4d6a0709e731e3d419b5852f9f635f33, type: 2}
+  keyBindings: {fileID: 0}
+  playerSettings: {fileID: 0}
   playerConfig: {fileID: 11400000, guid: 6fa70dd953f02e04295bdcf4bb02ec5a, type: 2}
   camera: {fileID: 0}
   collider: {fileID: 6986775249836888770}
@@ -396,7 +396,7 @@ MonoBehaviour:
   stopSpeed: 5
   moveSpeed: 10
   runAcceleration: 5
-  airAcceleration: 2
+  airAcceleration: 1.75
   jumpForce: 10
 --- !u!54 &3057203127152837636
 Rigidbody:

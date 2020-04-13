@@ -35,9 +35,9 @@ public class PlayerController : NetworkBehaviour
   [SerializeField] private float stopSpeed = 5.0f;
 
   /* Movement stuff */
-  [SerializeField] private float moveSpeed = 25f;        // Ground move speed
-  [SerializeField] private float runAcceleration = 5; // Ground accel
-  [SerializeField] private float airAcceleration = 2; // Air accel
+  [SerializeField] private float moveSpeed = 10f;        // Ground move speed
+  [SerializeField] private float runAcceleration = 5f; // Ground accel
+  [SerializeField] private float airAcceleration = 1.75f; // Air accel
   [SerializeField] private float jumpForce = 10.0f;       // The speed at which the character's up axis gains when hitting jump
   private int jumps = 2;				 // The number of jumps the character has
   private int maxJumps = 2;    		 // The number of jumps to reset to
@@ -177,6 +177,12 @@ public class PlayerController : NetworkBehaviour
 
   private void AirMove()
   {
+	float x = 0f, z = 0f;
+    if (Input.GetKey(keyBindings.Forward))  z += 1;
+    if (Input.GetKey(keyBindings.Backward)) z -= 1;
+    if (Input.GetKey(keyBindings.Right))    x += 1;
+    if (Input.GetKey(keyBindings.Left))     x -= 1;
+	wishMove = x * transform.right + z * transform.forward;
     if (Input.GetButtonDown("Jump") && jumps > 0)
     {
       velocity.y = jumpForce;
