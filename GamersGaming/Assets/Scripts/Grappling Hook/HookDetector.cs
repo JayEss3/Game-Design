@@ -7,7 +7,7 @@ public class HookDetector : MonoBehaviour
 
     public GameObject player;
 
-    void onTriggerEnter(Collder other)
+    void onTriggerEnter(Collider other)
     {
         if (other.tag == "Hookable")
         {
