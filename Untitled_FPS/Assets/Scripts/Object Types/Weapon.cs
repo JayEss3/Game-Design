@@ -106,9 +106,11 @@ public class Weapon : NetworkBehaviour
             var ray = new Ray(_bulletFireLocation.position, _bulletFireLocation.forward);
             RaycastHit hitInfo;
             if (Physics.Raycast(ray, out hitInfo, _effectiveRange)) {
+                Debug.Log($"I hit something : {hitInfo.transform.name}");
                 if (hitInfo.transform.tag == "Player")
                 {
                     owningPlayer.ApplyDamage(hitInfo.transform.gameObject, _damage);
+                    Debug.Log("Sending to Owning player");
                 }
             }
             m_roundsRemaining--;

@@ -9,10 +9,11 @@ public class Player : NetworkBehaviour
     //54.196.241.190
     [Header("Synced Vars")]
     [SyncVar(hook =nameof(UpdateHealth))] public float health = 100f;
+    [SyncVar] public string playerType = "None";
+    [SyncVar] public string playerName = "Player";
     [Header("Player User Interface")]
     public TextMeshProUGUI healthText = null;
     public RectTransform healthBar = null;
-    [SyncVar] public string playerName = "Player";
     [Header("Audio")]
     public List<AudioClip> audioClips = new List<AudioClip>();
     public AudioSource audioSource = null;
@@ -34,14 +35,23 @@ public class Player : NetworkBehaviour
     }
     public void UpdateHealth(float oldHealth, float newHealth)
     {
-        healthText.text = newHealth.ToString();
-        healthBar.sizeDelta = new Vector2((newHealth / 100) * 200, healthBar.sizeDelta.y);
+        if(newHealth <= 100)
+        {
+            healthText.text = newHealth.ToString();
+            healthBar.sizeDelta = new Vector2((newHealth / 100) * 200, healthBar.sizeDelta.y);
+        }
+        else
+        {
+            healthText.text = newHealth.ToString();
+            healthBar.sizeDelta = new Vector2((newHealth / 2500) * 200, healthBar.sizeDelta.y);
+        }
     }
     public void ApplyDamage(GameObject target, float damage)
     {
         audioSource.clip = audioClips[0];
         audioSource.Play();
         CmdApplyDamage(target, damage);
+        Debug.Log("Sending message to server");
     }
     [Command]
     public void CmdApplyDamage(GameObject target, float damage)
@@ -54,7 +64,11 @@ public class Player : NetworkBehaviour
                 var im = pim.currentPlayerInstance.GetComponent<InstanceManager>();
                 var spawnIndex = Random.Range(0, im.respawnPoints.Count);
                 var spawnLocation = im.respawnPoints[spawnIndex];
-                target.GetComponent<Player>().health = 100;
+                var tarply = target.GetComponent<Player>();
+                if(tarply.playerType == "Tagger")
+                    tarply.health = 2500;
+                else
+                    tarply.health = 100;
                 RpcRespawnPlayer(spawnLocation.position, target);
             }
         }

@@ -114,10 +114,14 @@ public class PlayerUIHandler : NetworkBehaviour
         instanceMaster = im;
         instanceName.text = name;
         instanceImage.sprite = sprite;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         _instanceDisplayParent.SetActive(true);
     }
     public void ClearInstanceUI()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         _instanceDisplayParent.SetActive(false);
         instanceMaster = null;
         instanceName.text = "";

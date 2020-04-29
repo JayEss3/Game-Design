@@ -79,37 +79,47 @@ public class ShootingHandler : NetworkBehaviour
         if (Cursor.visible)
             return;
 
-        if (m_currentWeapon != WeaponType.None)
-        {
-            if (Input.GetMouseButtonDown(0))
-                _weaponParent.transform.GetChild(0).SendMessage("PressShoot");
-            else if (Input.GetMouseButton(0))
-                _weaponParent.transform.GetChild(0).SendMessage("HoldShoot");
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                playerAudio.clip = reloadSound;
-                playerAudio.Play();
-                _weaponParent.transform.GetChild(0).SendMessage("Reload");
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.F))
+        var player = GetComponent<Player>();
+        if (player.playerType == "Taggie")
         {
             if (m_currentWeapon != WeaponType.None)
-                CmdDropWeapon();
-            else
             {
-                RaycastHit[] hits;
-                hits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward, 5f);
-                for (int i = 0; i < hits.Length; i++)
+                if (Input.GetMouseButtonDown(0))
+                    _weaponParent.transform.GetChild(0).SendMessage("PressShoot");
+                else if (Input.GetMouseButton(0))
+                    _weaponParent.transform.GetChild(0).SendMessage("HoldShoot");
+                if (Input.GetKeyDown(KeyCode.R))
                 {
-                    RaycastHit hit = hits[i];
-                    if (hit.transform.tag == "Weapon" && m_currentWeapon == WeaponType.None)
+                    playerAudio.clip = reloadSound;
+                    playerAudio.Play();
+                    _weaponParent.transform.GetChild(0).SendMessage("Reload");
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (m_currentWeapon != WeaponType.None)
+                    CmdDropWeapon();
+                else
+                {
+                    RaycastHit[] hits;
+                    hits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward, 5f);
+                    for (int i = 0; i < hits.Length; i++)
                     {
-                        playerAudio.clip = pickUpAudio;
-                        playerAudio.Play();
-                        CmdPickUpWeapon(hit.transform.gameObject);
+                        RaycastHit hit = hits[i];
+                        if (hit.transform.tag == "Weapon" && m_currentWeapon == WeaponType.None)
+                        {
+                            playerAudio.clip = pickUpAudio;
+                            playerAudio.Play();
+                            CmdPickUpWeapon(hit.transform.gameObject);
+                        }
                     }
                 }
+            }
+        } else if(player.playerType == "Tagger")
+        {
+            if (Input.GetMouseButtonDown(0)) {
+                var movementHandler = GetComponent<GravitagMovementHandler>();
+                movementHandler.AbilityInputs();
             }
         }
     }

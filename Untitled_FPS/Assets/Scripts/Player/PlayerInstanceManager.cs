@@ -26,12 +26,17 @@ public class PlayerInstanceManager : NetworkBehaviour
             }
             if (instance != null)
             {
-                currentPlayerInstance = instance;
-                inInstance = true;
-                var instanceData = instance.GetComponent<InstanceData>();
-                var player = identity.GetComponent<Player>();
-                instances.Add(im.instanceName, joinningID);
-                RpcMovePlayer(instanceData.connectionSpawnLocation.position, identity.gameObject);
+                var instanceManager = instance.GetComponent<InstanceManager>();
+                if (instanceManager.currentPlayerCount < instanceManager.maxPlayerCount)
+                {
+                    currentPlayerInstance = instance;
+                    inInstance = true;
+                    var instanceData = instance.GetComponent<InstanceData>();
+                    var player = identity.GetComponent<Player>();
+                    instances.Add(im.instanceName, joinningID);
+                    player.playerType = "Taggie";
+                    RpcMovePlayer(instanceData.connectionSpawnLocation.position, identity.gameObject);
+                }
             }
         }
         else
@@ -45,12 +50,15 @@ public class PlayerInstanceManager : NetworkBehaviour
 
             var instanceManager = instance.GetComponent<InstanceManager>();
             instanceManager.SpawnWeapons();
+            instanceManager.currentPlayerCount++;
 
             var instanceData = instance.GetComponent<InstanceData>();
             instanceData.instanceID = joinningID;
 
             var player = identity.GetComponent<Player>();
             instances.Add(im.instanceName, joinningID);
+            player.playerType = "Tagger";
+            player.health = 2500f;
 
             RpcMovePlayer(instanceData.connectionSpawnLocation.position, identity.gameObject);
         }

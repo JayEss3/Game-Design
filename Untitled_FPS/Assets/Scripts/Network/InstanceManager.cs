@@ -8,6 +8,10 @@ public class InstanceManager : NetworkBehaviour
     public List<Transform> respawnPoints;
     public List<Transform> weaponSpawnLocations;
     public List<GameObject> spawnableWeapons;
+    public int maxPlayerCount = 8;
+    [SyncVar(hook=nameof(CheckIfReady))] public int currentPlayerCount = 0;
+    //public delegate void StartMatchDelegate();
+    //[SyncEvent] public event StartMatchDelegate EventStartMatch;
 
     public void SpawnWeapons()
     {
@@ -18,5 +22,16 @@ public class InstanceManager : NetworkBehaviour
             weapon.transform.position = location.position;
             NetworkServer.Spawn(weapon);
         }
+    }
+
+    public void CheckIfReady(int oldCount, int newCount)
+    {
+        if (maxPlayerCount == newCount)
+            CmdStartMatch();
+    }
+    [Command]
+    public void CmdStartMatch()
+    {
+
     }
 }

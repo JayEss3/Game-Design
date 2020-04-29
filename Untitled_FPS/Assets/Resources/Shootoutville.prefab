@@ -287,6 +287,8 @@ MonoBehaviour:
   - {fileID: 9139467011105082603, guid: 02143964f93cc974eb883512207380a1, type: 3}
   - {fileID: 2864484339695644523, guid: c78bb0934ebd38044aca757f601c9271, type: 3}
   - {fileID: 2449688734205941959, guid: 9aeeeda5b3e633c4ca63a3f0db4bb133, type: 3}
+  maxPlayerCount: 10
+  currentPlayerCount: 0
 --- !u!114 &-5810644984389487822
 MonoBehaviour:
   m_ObjectHideFlags: 0

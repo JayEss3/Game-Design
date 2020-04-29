@@ -13,6 +13,7 @@ public class GravitagMovementHandler : NetworkBehaviour
     [SerializeField] private Rigidbody rigidbody;
     public KeyBindings bindings;
     public PlayerConfig settings;
+    public AudioClip punchSound = null;
 
     [Header("Vars")]
     // Camera setup
@@ -33,7 +34,7 @@ public class GravitagMovementHandler : NetworkBehaviour
     private int jumps;                              // The number of jumps the character has
     private int maxJumps;                           // The number of jumps to reset to
 
-    [SerializeField] private Vector3 velocity;
+    [SyncVar] public Vector3 velocity;
     private bool isGrounded = false;
     private Vector3 preboost;
     [SerializeField] private float boosted;
@@ -48,9 +49,6 @@ public class GravitagMovementHandler : NetworkBehaviour
         Camera.main.transform.localPosition = rigidbody.position + new Vector3(0f, viewOffset, 0f);
         Camera.main.transform.localEulerAngles = new Vector3(10f, 0f, 0f);
         camera = Camera.main;
-
-        if (!collider)
-            collider = GetComponent<CapsuleCollider>();
     }
 
     void OnDisable()
@@ -115,8 +113,6 @@ public class GravitagMovementHandler : NetworkBehaviour
             GroundMove();
         else if (!isGrounded)
             AirMove();
-
-        AbilityInputs();
     }
 
     private void FixedUpdate()
@@ -191,17 +187,30 @@ public class GravitagMovementHandler : NetworkBehaviour
         velocity.y -= gravity * Time.deltaTime;
         Accelerate(airSpeed);
     }
+    #endregion Player Input
 
-    private void AbilityInputs()
+    public void AbilityInputs()
     {
-        if (Input.GetMouseButtonDown(0) && boosted <= 0 && Cursor.visible == false)
+        if (boosted <= 0)
         {
             preboost = velocity;
             velocity = (Camera.main.transform.forward * 50);
             boosted = 0.25f;
+            CmdPlayPunchSound(gameObject);
         }
     }
-    #endregion Player Input
+    [Command]
+    public void CmdPlayPunchSound(GameObject player)
+    {
+        RpcPlayPunchSound(player);
+    }
+    [ClientRpc]
+    public void RpcPlayPunchSound(GameObject player)
+    {
+        var paudioSource = player.GetComponent<AudioSource>();
+        paudioSource.clip = punchSound;
+        paudioSource.Play();
+    }
 
     #region Physics
     private void Friction()
